@@ -1,0 +1,23 @@
+version: "3.7"
+
+services:
+  controlnode:
+    build: control-node/
+    image: ansible:controlnode
+    working_dir: /playbook
+    command: 'tail -f /dev/null'
+    volumes:
+      - ./secrets:/secrets
+      - ./playbook-example:/playbook
+  managedhost:
+    build: managed-host/
+    image: ansible:managedhost-0.3
+    volumes:
+      - ./secrets/id_rsa.pub:/root/.ssh/authorized_keys
+    # ports:
+    #   - 2222:22
+    environment:
+      - SSH_ENABLE_ROOT=true
+      # - SSH_USERS="admin:1000:1000"
+    deploy:
+      replicas: 3

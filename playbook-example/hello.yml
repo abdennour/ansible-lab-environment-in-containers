@@ -1,0 +1,23 @@
+- name: First play
+  hosts: all
+  tasks:
+  - name: openrc is installed
+    apk:
+      name: openrc
+      update_cache: yes
+      state: latest
+  - name: nginx is installed
+    apk:
+      name: nginx
+      update_cache: yes
+      state: latest
+  - name: web server is started
+    service:
+      name: nginx
+      state: started
+      enabled: true
+    ignore_errors: yes
+  - name: smoke test
+    uri:
+      url: http://localhost
+      return_content: yes
