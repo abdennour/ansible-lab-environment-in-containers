@@ -1,5 +1,11 @@
 A fully dockerized environment to play with ansible.
 
+# Prerequisites:
+
+- Docker
+- Docker Compose
+- [ kubectl ]
+
 # Configuration
 
 - Generate SSH key pair in `./secrets` directory:
