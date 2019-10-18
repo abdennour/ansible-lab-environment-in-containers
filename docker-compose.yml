@@ -24,6 +24,7 @@ services:
     deploy:
       replicas: 3
   managedhost-redhat-base: &redhatbase
+    image: hello-world
     restart: 'no'
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
