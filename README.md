@@ -1,3 +1,7 @@
+<meta name="image" property="og:image" content="https://github.com/abdennour/ansible-lab-environment-in-containers/raw/master/.img/ansible-ping.png">
+<meta name="author" content="Abdennour TOUMI">
+
+
 A fully dockerized environment to play with ansible.
 
 # Prerequisites:
