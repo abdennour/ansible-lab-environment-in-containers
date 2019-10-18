@@ -28,7 +28,7 @@
       src: app.js.j2
       dest: /node-app/app.js
   - name: app dependencies file is copied
-    template:
+    copy:
       src: package.json
       dest: /node-app/package.json
   - name: app dependencies are installed
