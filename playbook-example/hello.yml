@@ -77,6 +77,7 @@
     blockinfile:
       path: /usr/share/nginx/html/index.html
       marker: "<!-- {mark} ANSIBLE MANAGED BLOCK -->"
+      insertbefore: "</body>"
       block: |
         <div style="display:flex;justify-content:right">
            <section>Served by:&nbsp;{{ inventory_hostname }}</section>
