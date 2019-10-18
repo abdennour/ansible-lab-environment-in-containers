@@ -11,7 +11,6 @@ services:
       - ./playbook-example:/playbook
   managedhost-alpine:
     build: managed-host/
-    image: ansible:managedhost-0.3
     restart: unless-stopped
     volumes:
       - ./secrets/id_rsa.pub:/root/.ssh/authorized_keys
