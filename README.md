@@ -55,7 +55,11 @@ docker-compose up -d
 docker-compose exec controlnode ash
 ########
 /playbook $ ansible all --list-hosts 
-/playbook $ ansible alpine-example-com -m ping
+## alpine-example-com
+## centos7-example-com
+## rhel8-example-com
+
+/playbook $ ansible all -m ping
 ```
 
 ![Ansible Ping output](.img/ansible-ping.png "stdout ansible all -m ping")
@@ -67,12 +71,16 @@ docker-compose exec controlnode ash
 ########
 
 # run the playbook sample:
-/playbook $ ansible-playbook hello.yml -u root -b
+/playbook $ ansible-playbook hello.yml
 ```
+
+![Playbook Hello  output](.img/ansible-playbook-stdout.png "stdout ansible-playbook hello.yml")
+
+
 
 **Validation**
 
-on you host, navigate to :
+on your host, navigate to :
 - http://localhost:3001 , app (node) run in alpine node
 - http://localhost:8081 , app (nginx) runs in rhel8 node
 - http://localhost:8082 , app (nginx) runs in centos7 node
