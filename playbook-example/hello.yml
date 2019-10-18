@@ -18,7 +18,7 @@
       state: latest
     loop:
     - nodejs
-    - npm
+    - nodejs-npm
   - name: app directory is created
     file:
       path: /node-app
