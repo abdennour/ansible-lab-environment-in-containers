@@ -55,7 +55,7 @@ docker-compose up -d
 docker-compose exec controlnode ash
 ########
 /playbook $ ansible all --list-hosts 
-/playbook $ ansible alpine.example.com -m ping -u root
+/playbook $ ansible alpine-example-com -m ping -u root
 
 # run the playbook sample:
 /playbook $ ansible-playbook hello.yml -u root -b
@@ -95,7 +95,7 @@ kubectl exec -it ${controlnode_podid} ash
 
 ########
 /playbook $ ansible all --list-hosts 
-/playbook $ ansible alpine.example.com -m ping -u root
+/playbook $ ansible alpine-example-com -m ping -u root
 # run the playbook sample:
 /playbook $ ansible-playbook hello.yml -u root 
 ```
