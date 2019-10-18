@@ -83,7 +83,13 @@ docker-compose exec controlnode ash
 on your host, navigate to :
 - http://localhost:3001 , app (node) run in alpine node
 - http://localhost:8081 , app (nginx) runs in rhel8 node
-- http://localhost:8082 , app (nginx) runs in centos7 node
+- http://localhost:8082 , app (nginx) runs in centos7 
+
+![http://localhost:3001](.img/localhost-3001-alpine-nodeapp.png "http://localhost:3001")
+
+![http://localhost:8081](.img/localhost-8081-rhel.png "http://localhost:8081")
+
+![http://localhost:8082](.img/localhost-8082-centos.png "http://localhost:8082")
 
 
 **Cleanup**
