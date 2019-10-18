@@ -9,6 +9,7 @@ services:
     volumes:
       - ./secrets:/secrets
       - ./playbook-example:/playbook
+      - /var/run/docker.sock:/var/run/docker.sock:ro
   managedhost-alpine:
     build: managed-host/
     restart: unless-stopped
@@ -31,7 +32,7 @@ services:
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
 
-  managedhost-centos7:
+  managedhost-z:
     image: centos/systemd
     container_name: centos7.example.com
     restart: unless-stopped
