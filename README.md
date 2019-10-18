@@ -1,12 +1,10 @@
 A fully dockerized environment to play with ansible.
 
-<<<<<<< HEAD
 # Prerequisites:
 
 - Docker
 - Docker Compose
 - [ kubectl ]
-=======
 # Lab Architecture : 
 
 ## Nodes
@@ -33,7 +31,6 @@ It consists of 3 plays:
 * Second play: targets the alpine node to run NodeJS app (running inside container on port 3000, running externally on port 3001 - check [docker-compose](docker-compose.yml) )
 
 * Third play: targets both RedHat containers ( rhEL8, centos7) to run nginx (conclude exposed ports from [docker-compose](docker-compose.yml)  )
->>>>>>> b8508f099a4e86cb06276d9d769562a7c82cc8f8
 
 # Configuration
 
