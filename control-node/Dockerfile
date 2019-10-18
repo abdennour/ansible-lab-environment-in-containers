@@ -1,5 +1,5 @@
 FROM alpine:3.9
 
-RUN apk add python ansible
-RUN apk add --update openssh sshpass python ansible \
-&& rm  -rf /tmp/* /var/cache/apk/*
+# docker is required to support ansible_connection=docker
+RUN apk add --update openssh sshpass python ansible docker \
+  && rm  -rf /tmp/* /var/cache/apk/*
