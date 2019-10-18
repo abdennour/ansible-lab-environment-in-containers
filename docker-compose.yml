@@ -11,7 +11,7 @@ services:
       - ./playbook-example:/playbook
       - /var/run/docker.sock:/var/run/docker.sock:ro
   managedhost-alpine:
-    build: managed-host/
+    build: managed-host/alpine/
     restart: unless-stopped
     volumes:
       - ./secrets/id_rsa.pub:/root/.ssh/authorized_keys
@@ -24,17 +24,17 @@ services:
     deploy:
       replicas: 3
   managedhost-rhel8:
-    image: registry.access.redhat.com/ubi8/ubi-init
     container_name: rhel8-example-com
+    build: managed-host/rhel8/
     restart: unless-stopped
     ports:
       - 8081:80 # playbook will run nginx
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
 
-  managedhost-z:
-    image: centos/systemd
+  managedhost-centos7:
     container_name: centos7-example-com
+    image: centos/systemd
     restart: unless-stopped
     ports:
       - 8082:80 # playbook will run nginx
