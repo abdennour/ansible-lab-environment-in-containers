@@ -79,6 +79,6 @@
       marker: "<!-- {mark} ANSIBLE MANAGED BLOCK -->"
       insertbefore: "</body>"
       block: |
-        <div style="display:flex;justify-content:right">
+        <div style="display:flex;justify-content:center">
            <section>Served by:&nbsp;{{ inventory_hostname }}</section>
         </div>
