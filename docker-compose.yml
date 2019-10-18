@@ -9,15 +9,36 @@ services:
     volumes:
       - ./secrets:/secrets
       - ./playbook-example:/playbook
-  managedhost:
+  managedhost-alpine:
     build: managed-host/
     image: ansible:managedhost-0.3
+    restart: unless-stopped
     volumes:
       - ./secrets/id_rsa.pub:/root/.ssh/authorized_keys
-    # ports:
-    #   - 2222:22
+    ports:
+      - 3001:3000
+#      - 2222:22
     environment:
       - SSH_ENABLE_ROOT=true
       # - SSH_USERS="admin:1000:1000"
     deploy:
       replicas: 3
+  managedhost-rhel8:
+    image: registry.access.redhat.com/ubi8/ubi-init
+    container_name: rhel8.example.com
+    restart: unless-stopped
+    ports:
+      - 8081:80 # playbook will run nginx
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+
+  managedhost-centos7:
+    image: centos/systemd
+    container_name: centos7.example.com
+    restart: unless-stopped
+    ports:
+      - 8082:80 # playbook will run nginx
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+
+
