@@ -118,9 +118,9 @@ kubectl exec -it ${controlnode_podid} ash
 
 ########
 /playbook $ ansible all --list-hosts 
-/playbook $ ansible alpine-example-com -m ping -u root
+/playbook $ ansible alpine-example-com -m ping
 # run the playbook sample:
-/playbook $ ansible-playbook hello.yml -u root 
+/playbook $ ansible-playbook hello.yml
 ```
 
 
