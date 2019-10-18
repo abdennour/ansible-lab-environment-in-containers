@@ -22,7 +22,7 @@
   - name: app directory is created
     file:
       path: /node-app
-      state: present
+      state: directory
   - name: app is installed
     template:
       src: app.js.j2
