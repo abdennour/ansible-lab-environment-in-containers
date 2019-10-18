@@ -1,8 +1,7 @@
 FROM alpine:edge as downloads
 WORKDIR /data
 RUN wget https://www.python.org/ftp/python/3.6.2/Python-3.6.2.tar.xz \
-  && tar -xvf Python-3.6.2.tar.xz \
-  && Python-3.6.2.tar.xz
+  && tar -xvf Python-3.6.2.tar.xz
 
 
 FROM registry.access.redhat.com/ubi8/ubi-init
