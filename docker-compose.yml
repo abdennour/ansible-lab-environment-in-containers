@@ -23,22 +23,28 @@ services:
       # - SSH_USERS="admin:1000:1000"
     deploy:
       replicas: 3
+  managedhost-redhat-base: &redhatbase
+    restart: 'no'
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: true
+
   managedhost-rhel8:
+    <<: *redhatbase
     container_name: rhel8-example-com
     build: managed-host/rhel8/
     restart: unless-stopped
     ports:
       - 8081:80 # playbook will run nginx
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+
 
   managedhost-centos7:
+    <<: *redhatbase
     container_name: centos7-example-com
     image: centos/systemd
     restart: unless-stopped
     ports:
       - 8082:80 # playbook will run nginx
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+
 
 
