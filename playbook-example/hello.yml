@@ -82,3 +82,27 @@
         <div style="display:flex;justify-content:center">
            <section>Served by:&nbsp;{{ inventory_hostname }}</section>
         </div>
+- name: Play - Alpine with Systemd or service - Apache webserver
+  hosts: alpinesystemd-example-com
+  tasks:
+  - name: apache is installed
+    package:
+      name: apache2
+      state: latest
+  - name: web server is started
+    service:
+      name: apache2
+      state: started
+  - name: smoke test
+    uri:
+      url: http://localhost
+      return_content: yes
+  - name: marker is added at index.html
+    blockinfile:
+      path: /var/www/localhost/htdocs/index.html
+      marker: "<!-- {mark} ANSIBLE MANAGED BLOCK -->"
+      insertbefore: "</body>"
+      block: |
+        <div style="display:flex;">
+           <section>Served by:&nbsp;{{ inventory_hostname }}</section>
+        </div>

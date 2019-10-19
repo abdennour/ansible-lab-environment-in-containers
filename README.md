@@ -8,15 +8,16 @@ A fully dockerized environment to play with ansible.
 # Lab Architecture : 
 
 ## Nodes
- This Lab consists of 4 containers:
+ This Lab consists of 5 containers:
 
  - 1 control node container (control-node).
 
- - 3 managed hosts containers :
+ - 5 managed hosts containers :
 
     * Alpine with SSH connection (ansible_connection=ssh)
     * RHEL8 with docker connection (ansible_connection=docker)
     * CentOS7 with docker connection (ansible_connection=docker)
+    * Alpine+systemd with docker connection (ansible_connection=docker)
 
 All these containers are defined in [docker-compose.yml](docker-compose.yml)
 
@@ -24,13 +25,15 @@ All these containers are defined in [docker-compose.yml](docker-compose.yml)
 
 The playbook sample is under [playbook-example/hello.yml](playbook-example/hello.yml).
 
-It consists of 3 plays: 
+It consists of 4 plays: 
 
 * First play: target all managed hosts to create a simple file
 
 * Second play: targets the alpine node to run NodeJS app (running inside container on port 3000, running externally on port 3001 - check [docker-compose](docker-compose.yml) )
 
 * Third play: targets both RedHat containers ( rhEL8, centos7) to run nginx (conclude exposed ports from [docker-compose](docker-compose.yml)  )
+
+* Fourth play: target Alpine-systemd container to run Apache Web server ( external port 8083)
 
 # Configuration
 
@@ -100,6 +103,10 @@ on your host, navigate to :
 
 ![http://localhost:8082](.img/localhost-8082-centos.png "http://localhost:8082")
 
+
+- http://localhost:8083 , app (apache) runs in alpine-systemd
+
+![http://localhost:8083](.img/localhost-8083-alpine-apache.png "http://localhost:8083")
 
 **Cleanup**
 
