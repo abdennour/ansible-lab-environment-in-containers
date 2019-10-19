@@ -12,7 +12,7 @@ A fully dockerized environment to play with ansible.
 
  - 1 control node container (control-node).
 
- - 5 managed hosts containers :
+ - 4 managed hosts as containers :
 
     * Alpine with SSH connection (ansible_connection=ssh)
     * RHEL8 with docker connection (ansible_connection=docker)
