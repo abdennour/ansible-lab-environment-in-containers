@@ -23,7 +23,7 @@ services:
       # - SSH_USERS="admin:1000:1000"
     deploy:
       replicas: 3
-  managedhost-redhat-base: &redhatbase
+  managedhost-redhat-base: &systemdbase
     image: hello-world
     restart: 'no'
     volumes:
@@ -31,7 +31,7 @@ services:
     privileged: true
 
   managedhost-rhel8:
-    <<: *redhatbase
+    <<: *systemdbase
     container_name: rhel8-example-com
     build: managed-host/rhel8/
     restart: unless-stopped
@@ -40,12 +40,21 @@ services:
 
 
   managedhost-centos7:
-    <<: *redhatbase
+    <<: *systemdbase
     container_name: centos7-example-com
     image: centos/systemd
     restart: unless-stopped
     ports:
       - 8082:80 # playbook will run nginx
+  managedhost-alpine-systemd:
+    <<: *systemdbase
+    container_name: alpinesystemd-example-com
+    build:
+      context: managed-host/alpine/
+      target: alpine-systemd
+    restart: unless-stopped
+    ports:
+      - 8083:80
 
 
 
