@@ -97,3 +97,12 @@
     uri:
       url: http://localhost
       return_content: yes
+  - name: marker is added at index.html
+    blockinfile:
+      path: /var/www/localhost/htdocs/index.html
+      marker: "<!-- {mark} ANSIBLE MANAGED BLOCK -->"
+      insertbefore: "</body>"
+      block: |
+        <div style="display:flex;">
+           <section>Served by:&nbsp;{{ inventory_hostname }}</section>
+        </div>

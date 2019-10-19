@@ -1,0 +1,25 @@
+no need privileged with alpine systemd
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch feature/systemd-for-alpine
+# Your branch is up to date with 'origin/feature/systemd-for-alpine'.
+#
+# Changes to be committed:
+#	modified:   docker-compose.yml
+#
+# ------------------------ >8 ------------------------
+# Do not modify or remove the line above.
+# Everything below it will be ignored.
+diff --git a/docker-compose.yml b/docker-compose.yml
+index 2c1f67c..4ad816f 100644
+--- a/docker-compose.yml
++++ b/docker-compose.yml
+@@ -49,7 +49,6 @@ services:
+     ports:
+       - 8082:80 # playbook will run nginx
+   managedhost-alpine-systemd:
+-    <<: *systemdbase
+     container_name: alpinesystemd-example-com
+     build:
+       context: managed-host/alpine/
