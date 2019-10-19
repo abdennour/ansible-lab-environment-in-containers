@@ -6,7 +6,7 @@ RUN apk --update --no-cache add openrc python && \
 ENTRYPOINT ["/sbin/init"]
 
 
-FROM alpine-systemd
+FROM alpine-systemd as alpine-sshd
 
 RUN apk update && \
     apk add bash git openssh rsync augeas shadow && \

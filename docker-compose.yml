@@ -11,7 +11,9 @@ services:
       - ./playbook-example:/playbook
       - /var/run/docker.sock:/var/run/docker.sock:ro
   managedhost-alpine:
-    build: managed-host/alpine/
+    build: 
+      context: managed-host/alpine/
+      target: alpine-sshd
     restart: unless-stopped
     volumes:
       - ./secrets/id_rsa.pub:/root/.ssh/authorized_keys
