@@ -62,7 +62,8 @@ docker-compose up -d
 ## 
 docker-compose exec controlnode ash
 ########
-/playbook $ ansible all --list-hosts 
+/playbook $ ansible all --list-hosts
+## alpinesystemd-example-com
 ## alpine-example-com
 ## centos7-example-com
 ## rhel8-example-com
