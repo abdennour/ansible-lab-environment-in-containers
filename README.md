@@ -106,6 +106,7 @@ on your host, navigate to :
 
 - http://localhost:8083 , app (apache) runs in alpine-systemd
 
+![http://localhost:8083](.img/localhost-8083-alpine-apache.png "http://localhost:8083")
 
 **Cleanup**
 
