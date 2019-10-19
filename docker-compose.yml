@@ -49,7 +49,6 @@ services:
     ports:
       - 8082:80 # playbook will run nginx
   managedhost-alpine-systemd:
-    <<: *systemdbase
     container_name: alpinesystemd-example-com
     build:
       context: managed-host/alpine/
