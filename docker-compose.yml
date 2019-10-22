@@ -11,6 +11,7 @@ services:
       - ./playbook-example:/playbook
       - /var/run/docker.sock:/var/run/docker.sock:ro
   managedhost-alpine:
+    container_name: ansible-lab-managedhost-alpine
     build: 
       context: managed-host/alpine/
       target: alpine-sshd
@@ -34,7 +35,7 @@ services:
 
   managedhost-rhel8:
     <<: *systemdbase
-    container_name: rhel8-example-com
+    container_name: ansible-lab-managedhost-rhel8
     build: managed-host/rhel8/
     restart: unless-stopped
     ports:
@@ -43,13 +44,13 @@ services:
 
   managedhost-centos7:
     <<: *systemdbase
-    container_name: centos7-example-com
+    container_name: ansible-lab-managedhost-centos7
     image: centos/systemd
     restart: unless-stopped
     ports:
       - 8082:80 # playbook will run nginx
   managedhost-alpine-systemd:
-    container_name: alpinesystemd-example-com
+    container_name: ansible-lab-managedhost-alpine-systemd
     build:
       context: managed-host/alpine/
       target: alpine-systemd

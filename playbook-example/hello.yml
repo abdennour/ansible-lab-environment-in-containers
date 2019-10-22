@@ -9,7 +9,7 @@
       mode: '777'
 # Second play
 - name: Play - for Alpines Nodejs app
-  hosts: alpine-example-com
+  hosts: alpine.example.com
   tasks:
   - name: NodeJs is installed
     apk:
@@ -38,7 +38,7 @@
       production: true
   - name: Install forever (to run Node.js app).
     npm: name=forever global=yes state=present
-  
+
   - name: Check list of Node.js apps running.
     command: forever list
     register: forever_list
@@ -83,7 +83,7 @@
            <section>Served by:&nbsp;{{ inventory_hostname }}</section>
         </div>
 - name: Play - Alpine with Systemd or service - Apache webserver
-  hosts: alpinesystemd-example-com
+  hosts: alpine-systemd.example.com
   tasks:
   - name: apache is installed
     package:

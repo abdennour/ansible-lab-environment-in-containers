@@ -63,10 +63,10 @@ docker-compose up -d
 docker-compose exec controlnode ash
 ########
 /playbook $ ansible all --list-hosts
-## alpinesystemd-example-com
+## ansible-lab-managedhost-alpine-systemd
 ## alpine-example-com
-## centos7-example-com
-## rhel8-example-com
+## ansible-lab-managedhost-centos7
+## ansible-lab-managedhost-rhel8
 
 /playbook $ ansible all -m ping
 ```
