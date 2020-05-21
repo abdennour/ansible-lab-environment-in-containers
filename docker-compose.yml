@@ -28,6 +28,13 @@ services:
   managedhost-redhat-base: &systemdbase
     image: hello-world
     restart: 'no'
+    tmpfs:
+    - /run
+    - /run/lock
+    - /var/cache
+    - /tmp
+    cap_add:
+    - SYS_ADMIN
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: true
@@ -35,7 +42,8 @@ services:
   managedhost-rhel8:
     <<: *systemdbase
     container_name: rhel8-example-com
-    build: managed-host/rhel8/
+    # build: managed-host/rhel8/
+    image: abdennour/rhel:8-ssh
     restart: unless-stopped
     ports:
       - 8081:80 # playbook will run nginx
