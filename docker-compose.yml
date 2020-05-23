@@ -2,7 +2,10 @@ version: "3.7"
 
 services:
   controlnode:
-    build: control-node/
+    build:
+      context: control-node/
+      args:
+        ANSIBLE_VERSION: ${ANSIBLE_VERSION}
     image: ansible:controlnode
     working_dir: /playbook
     command: 'tail -f /dev/null'
