@@ -1,0 +1,6 @@
+#!/bin/sh
+
+ansible-galaxy install -r requirements.yml
+
+# ansible-playbook bootstrap.yml -e bs_username=${REMOTE_USERNAME} -e ansible_connection=docker || true
+tail -f /dev/null

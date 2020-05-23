@@ -2,21 +2,28 @@ version: "3.7"
 
 services:
   controlnode:
-    build: control-node/
-    image: ansible:controlnode
-    working_dir: /playbook
-    command: 'tail -f /dev/null'
+    build:
+      context: control-node/
+      args:
+        ANSIBLE_VERSION: ${ANSIBLE_VERSION}
+    working_dir: /code/playbook-example
+    restart: 'no'
+    user: '0'
     volumes:
-      - ./secrets:/secrets
-      - ./playbook-example:/playbook
+      - secrets:/secrets
+      - ansible-roles:/roles
+      - ./:/code
       - /var/run/docker.sock:/var/run/docker.sock:ro
+    command: sh entrypoint
+    env_file:
+    - .env
   managedhost-alpine:
     build: 
       context: managed-host/alpine/
       target: alpine-sshd
     restart: unless-stopped
-    volumes:
-      - ./secrets/id_rsa.pub:/root/.ssh/authorized_keys
+    # volumes:
+    #   - secrets/id_rsa.pub:/root/.ssh/authorized_keys
     ports:
       - 3001:3000
 #      - 2222:22
@@ -65,5 +72,7 @@ services:
     ports:
       - 8083:80
 
-
+volumes:
+  secrets:
+  ansible-roles:
 

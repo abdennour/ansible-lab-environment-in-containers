@@ -1,0 +1,13 @@
+- name: bootstrap all with ssh user
+  hosts: all
+  gather_facts: no
+  connection: docker
+  tags:
+  - bs-ssh
+  tasks:
+  - name: ssh user is created
+    import_role:
+      name: abdennour.bootstrap
+    vars:
+       bootstrap_username: "{{ bs_username }}"
+       bootstrap_keyair_path: /secrets/id_rsa
