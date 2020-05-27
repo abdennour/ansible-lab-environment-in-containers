@@ -8,6 +8,7 @@ services:
         ANSIBLE_VERSION: ${ANSIBLE_VERSION}
     image: ansible:controlnode
     working_dir: /playbook
+    user: 'root'
     command: 'tail -f /dev/null'
     volumes:
       - ./secrets:/secrets
