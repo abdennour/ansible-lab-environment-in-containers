@@ -1,0 +1,12 @@
+- name: play
+  hosts: alpine-example-com
+  tasks:
+   - name: download file
+     get_url:
+       url: https://api.github.com/
+       dest: /tmp
+     register: downloaded_file
+   - name: print last task output
+     debug:
+       var: downloaded_file
+     
