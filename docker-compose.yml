@@ -22,7 +22,8 @@ services:
     volumes:
       - ./secrets/id_rsa.pub:/root/.ssh/authorized_keys
     ports:
-      - 3001:3000
+      - 3000
+      #- 3001:3000
 #      - 2222:22
     environment:
       - SSH_ENABLE_ROOT=true
